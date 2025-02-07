@@ -60,33 +60,6 @@ if __name__ == "__main__":
     train_data = train_data.map(lambda x, y: (x / 255.0, y))
     val_data = val_data.map(lambda x, y: (x / 255.0, y))
 
-    # data = tf.keras.utils.image_dataset_from_directory(
-    #     DATA_DIR,
-    #     image_size=IMAGE_SIZE,
-    #     batch_size=BATCH_SIZE,
-    #     validation_split=0.2,
-    #     subset="both",
-    #     seed=42
-    # )
-    #
-    # # data_iterator = data.as_numpy_iterator()
-    # # batch = data_iterator.next()
-    # # fig, ax = plt.subplots(ncols=4, figsize=(20, 20))
-    # # for idx, img in enumerate(batch[0][:4]):
-    # #     ax[idx].imshow(img.astype(int))
-    # #     ax[idx].title.set_text(batch[1][idx])
-    # #
-    # # data = data.map(lambda x, y: (x / 255.0, y))
-    #
-    # data_size = data.cardinality().numpy()
-    # train_size = int(data_size * 0.7)
-    # val_size = int(data_size * 0.2)
-    # test_size = data_size - train_size - val_size
-    #
-    # train = data.take(train_size)
-    # val = data.skip(train_size).take(val_size)
-    # test = data.skip(train_size + val_size)
-
     base_model = VGG16(input_shape=(*IMAGE_SIZE, 3), include_top=False, weights='imagenet')
     base_model.trainable = False
 
